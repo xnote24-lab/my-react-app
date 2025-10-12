@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function MyNotes() {
     // Step 1: Define state for notes and input text
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]); // here notes is an array and setNotes update it
   const [text,setText] = useState("");
 // Step 2: Handle input change
 function handleInputChange(e){
@@ -12,7 +12,7 @@ function handleInputChange(e){
 // Step 3: Handle Add Note button
 function handleAddnoteBtn(){
   if(text.trim() === "") return; // avoid empty notes
-  setNotes([...notes,text]); // add note to list
+  setNotes([...notes,text]); // add note to list - meaning of ...notes is take all the element inside the notes array copy them into new array then add text at the end
   setText("");//clear input
 }
 // step 4: handle delete button

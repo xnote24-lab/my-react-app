@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react';
 
 export default function FetchData() {
     // Step 1: Define state variables
-    const [posts,setPosts] = useState([]);
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState(null);
+    const [posts,setPosts] = useState([]);// create variable for post
+    const [loading,setLoading] = useState(true); // create variable for loading
+    const [error,setError] = useState(null);// create variable for show error while fetching data
     // Step 2: Fetch data when component mounts
     useEffect(() =>{
         async function fetchPosts() {
             try{
                 const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+                //await tells javascript to wait for a promise to finish before moving to next line
+                // fetch is asynchrnous function it returns a promise-something that will finish later
+                //await pauses your code until that promise is resolved-i.e data is received
                 if(!response.ok){
                     throw new Error("Network response was not ok")
                 }
@@ -39,7 +42,9 @@ if(error){
       <ul>
         {posts.map((post) =>(
             <li key={post.id}>
+                {/*access the title property of the post object*/}
                 <strong>{post.title}</strong>
+                {/*access the body/content property of the post object*/}
                 <p>{post.body}</p>
             </li>
         ))}
